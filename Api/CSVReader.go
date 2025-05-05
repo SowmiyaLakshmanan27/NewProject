@@ -36,7 +36,7 @@ type OrderDetailsResponse struct {
 	Msg    string `json:"msg"`
 }
 
-func CSVReader(w http.ResponseWriter, r *http.Request) {
+func CSVRefreshHandler(w http.ResponseWriter, r *http.Request) {
 	(w).Header().Set("Access-Control-Allow-Origin", "*")
 	(w).Header().Set("Access-Control-Allow-Credentials", "true")
 	(w).Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
@@ -45,23 +45,24 @@ func CSVReader(w http.ResponseWriter, r *http.Request) {
 	var lOrderRespRec OrderDetailsResponse
 
 	if strings.EqualFold(r.Method, http.MethodPost) {
-		lOrderRespRec.Status = "S"
-		lOrderRespRec.Msg = "Successfully Inserted"
 		lTwoDArrayString, lErr := ReadCSV(r, "FileName")
 		if lErr != nil {
 			lOrderRespRec.Status = "E"
-			lOrderRespRec.Msg = "CSVReader:001 " + lErr.Error()
+			lOrderRespRec.Msg = "CSVRefreshHandler:001 " + lErr.Error()
 		} else {
 			lOrderDetails, lErr := TwoDConversion(lTwoDArrayString)
 			if lErr != nil {
 				lOrderRespRec.Status = "E"
-				lOrderRespRec.Msg = "CSVReader:002 " + lErr.Error()
+				lOrderRespRec.Msg = "CSVRefreshHandler:002 " + lErr.Error()
 			} else {
 				lErr = InsertOrders(lOrderDetails)
 				log.Println(lOrderDetails, "lOrderDetails")
 				if lErr != nil {
 					lOrderRespRec.Status = "E"
-					lOrderRespRec.Msg = "CSVReader:003 " + lErr.Error()
+					lOrderRespRec.Msg = "CSVRefreshHandler:003 " + lErr.Error()
+				} else {
+					lOrderRespRec.Status = "S"
+					lOrderRespRec.Msg = "Successfully Inserted"
 				}
 			}
 		}

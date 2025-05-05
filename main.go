@@ -17,7 +17,7 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
-	http.HandleFunc("/CSVReader", api.CSVReader)
+	http.HandleFunc("/refresh", api.CSVRefreshHandler)
 	http.HandleFunc("/GetRevenueDetails", api.GetRevenueDetails)
 
 	http.ListenAndServe(":2742", nil)
