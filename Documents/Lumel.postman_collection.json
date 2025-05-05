@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "1354751a-906f-45e1-bbc4-566264fb3d4c",
+		"name": "Lumel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27137594"
+	},
+	"item": [
+		{
+			"name": "CSVReader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "FileName",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:2742/CSVReader",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2742",
+					"path": [
+						"CSVReader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRevenueDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\" : \"\",\n    \"endDate\" : \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2742/GetRevenueDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2742",
+					"path": [
+						"GetRevenueDetails"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

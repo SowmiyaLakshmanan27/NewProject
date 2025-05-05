@@ -1,0 +1,23 @@
+CREATE TABLE order_Details (
+    id             INT AUTO_INCREMENT PRIMARY KEY,
+    OrderId         VARCHAR(50)  NOT NULL,
+    ProductId       VARCHAR(50)  NOT NULL,
+    CustomerId      VARCHAR(50)  NOT NULL,
+    ProductName     VARCHAR(100),
+    Category        VARCHAR(100),
+    Region          VARCHAR(100),
+    Date            DATE,
+    Quantity        INT,
+    UnitPrice       DECIMAL(10, 2),
+    Discount        DECIMAL(10, 2),
+    ShippingCost    DECIMAL(10, 2),
+    PaymentMethods  VARCHAR(50),
+    Name            VARCHAR(100),
+    EmailId         VARCHAR(100),
+    Address         TEXT,
+    Created_By      VARCHAR(50),
+    Created_Date    DATETIME,
+    Updated_By      VARCHAR(50),
+    Updated_Date    DATETIME,
+    PRIMARY KEY (id)
+);

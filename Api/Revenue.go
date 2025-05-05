@@ -105,7 +105,7 @@ func GetRevenueDetails(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "Error taking data"+err.Error())
 	} else {
-		fmt.Fprintf(w, string(lDatas))
+		fmt.Fprint(w, string(lDatas))
 	}
 }
 
